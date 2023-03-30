@@ -1,0 +1,18 @@
+ERROR   2023-03-29 12:05:05,283 [http-nio-8080-exec-1] com.dh.paciente.controller.PacienteController  - java.lang.Exception: No se encontro paciente con el id indicado
+ERROR   2023-03-29 12:17:20,499 [http-nio-8080-exec-3] com.dh.paciente.controller.PacienteController  - java.lang.Exception: No se encontro paciente con el id indicado
+ERROR   2023-03-29 12:17:24,608 [http-nio-8080-exec-5] com.dh.paciente.controller.PacienteController  - java.lang.Exception: No se encontro paciente u odontologo con el ID indicado
+ERROR   2023-03-29 12:18:56,758 [http-nio-8080-exec-3] com.dh.paciente.controller.PacienteController  - java.lang.Exception: No se encontro paciente u odontologo con el ID indicado
+ERROR   2023-03-29 12:19:18,033 [http-nio-8080-exec-4] com.dh.paciente.controller.PacienteController  - java.lang.Exception: No se encontro paciente con el id indicado
+ERROR   2023-03-29 12:20:45,327 [http-nio-8080-exec-1] com.dh.paciente.controller.PacienteController  - java.lang.Exception: No se encontro paciente con el id indicado
+ERROR   2023-03-29 12:20:47,778 [http-nio-8080-exec-5] com.dh.paciente.controller.PacienteController  - java.lang.Exception: No se encontro paciente u odontologo con el ID indicado
+ERROR   2023-03-29 12:22:22,928 [http-nio-8080-exec-1] com.dh.paciente.controller.PacienteController  - java.lang.Exception: No se encontro paciente u odontologo con el ID indicado
+ERROR   2023-03-29 20:23:03,601 [http-nio-8080-exec-2] com.dh.paciente.controller.PacienteController  - java.lang.Exception: No se encontro paciente con el id indicado
+ERROR   2023-03-29 20:23:06,189 [http-nio-8080-exec-4] com.dh.paciente.controller.PacienteController  - java.lang.Exception: No se encontro paciente para eliminar con el ID indicado.
+ERROR   2023-03-29 20:23:25,114 [http-nio-8080-exec-6] com.dh.paciente.controller.PacienteController  - java.lang.Exception: No se encontro paciente con el ID indicado para modificar.
+ERROR   2023-03-29 20:23:38,691 [http-nio-8080-exec-5] com.dh.paciente.controller.TurnoController  - java.lang.Exception: No se encontro ningun turno con el ID indicado.
+ERROR   2023-03-29 20:23:42,630 [http-nio-8080-exec-7] com.dh.paciente.controller.TurnoController  - java.lang.Exception: No se encontro turno con el ID indicado
+ERROR   2023-03-29 20:23:47,492 [http-nio-8080-exec-8] com.dh.paciente.controller.TurnoController  - java.lang.Exception: No se encontro turno para actualizar con el ID indicado.
+ERROR   2023-03-29 20:24:13,057 [http-nio-8080-exec-3] com.dh.paciente.controller.OdontologoController  - java.lang.Exception: No existe odontologo para eliminar con ese ID.
+ERROR   2023-03-29 20:24:30,869 [http-nio-8080-exec-4] com.dh.paciente.controller.OdontologoController  - java.lang.Exception: No se encontro odontologo con el ID indicado.
+ERROR   2023-03-29 20:24:48,047 [http-nio-8080-exec-8] com.dh.paciente.controller.PacienteController  - java.lang.Exception: No se encontro paciente con el id indicado
+ERROR   2023-03-29 20:26:06,463 [http-nio-8080-exec-2] com.dh.paciente.controller.OdontologoController  - java.lang.Exception: No se encontro odontologo para actualizar con el id indicado.
