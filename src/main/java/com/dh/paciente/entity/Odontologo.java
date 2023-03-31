@@ -13,6 +13,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+
 @Table(name = "ODONTOLOGOS", indexes = {@Index(name = "matricula_unique_index", columnList = "matricula", unique = true)})
 public class Odontologo {
     @Id

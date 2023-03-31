@@ -9,7 +9,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -27,11 +29,10 @@ public class PacienteService implements ServiceInterface<PacienteDTO, Paciente>{
 
         PacienteDTO pacienteDTO = mapper.convertValue(pacienteDataBase, PacienteDTO.class);
 
-
         return pacienteDTO;
     }
-    public Set<PacienteDTO> getAll(){
-        Set<PacienteDTO> pacientes = new HashSet<>();
+    public List<PacienteDTO> getAll(){
+        List<PacienteDTO> pacientes = new ArrayList<>();
         for (Paciente pacienteDataBase: repository.findAll()){
             PacienteDTO pacienteDTO = mapper.convertValue(pacienteDataBase, PacienteDTO.class);
             pacientes.add(pacienteDTO);

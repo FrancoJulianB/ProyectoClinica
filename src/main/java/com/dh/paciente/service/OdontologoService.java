@@ -17,11 +17,12 @@ public class OdontologoService implements ServiceInterface<OdontologoDTO, Odonto
     ObjectMapper mapper;
 
 
-    public Set<OdontologoDTO> getAll(){
-        Set<OdontologoDTO> odontologosDTO = new HashSet<>();
+    public List<OdontologoDTO> getAll(){
+        List<OdontologoDTO> odontologosDTO = new ArrayList<>();
 
         for (Odontologo odontologo: repository.findAll()){
-            OdontologoDTO odontologoDTO = mapper.convertValue(odontologo, OdontologoDTO.class);
+            OdontologoDTO odontologoDTO = classToDTO(odontologo);
+
             odontologosDTO.add(odontologoDTO);
         }
 
@@ -31,26 +32,25 @@ public class OdontologoService implements ServiceInterface<OdontologoDTO, Odonto
     public OdontologoDTO create(Odontologo odontologo) {
         Odontologo odontologoClass = repository.save(odontologo);
 
-        OdontologoDTO odontologoDTO = mapper.convertValue(odontologo, OdontologoDTO.class);
+        OdontologoDTO odontologoDTO = classToDTO(odontologo);
 
         return odontologoDTO;
     }
 
     public OdontologoDTO getById(Integer id) throws Exception{
         Odontologo odontologo = repository.findById(id).orElse(null);
+        Odontologo odontologo1;
         if(odontologo == null){
             throw new Exception("No se encontro odontologo con el ID indicado.");
         }
 
-        OdontologoDTO odontologoDTO = mapper.convertValue(odontologo, OdontologoDTO.class);
+        OdontologoDTO odontologoDTO = classToDTO(odontologo);
 
         return odontologoDTO;
     }
 
-
     public void delete(Integer id) throws Exception{
-        Odontologo odontologo = repository.findById(id).orElse(null);
-        if(odontologo == null){
+        if(!repository.existsById(id)){
             throw new Exception("No existe odontologo para eliminar con ese ID.");
         }
         repository.deleteById(id);
@@ -65,7 +65,7 @@ public class OdontologoService implements ServiceInterface<OdontologoDTO, Odonto
         }
 
         Odontologo unOdontologo = repository.save(odontologo);
-        OdontologoDTO odontologoDTO = mapper.convertValue(unOdontologo, OdontologoDTO.class);
+        OdontologoDTO odontologoDTO = classToDTO(odontologo);
 
 
         return odontologoDTO;
@@ -73,5 +73,15 @@ public class OdontologoService implements ServiceInterface<OdontologoDTO, Odonto
 
     public boolean exists(Integer id){
         return repository.existsById(id);
+    }
+
+    public OdontologoDTO classToDTO(Odontologo odontologo){
+        OdontologoDTO odontologoDTO = new OdontologoDTO();
+
+        odontologoDTO.setId(odontologo.getId());
+        odontologoDTO.setApellido(odontologo.getApellido());
+        odontologoDTO.setNombre(odontologo.getNombre());
+
+        return odontologoDTO;
     }
 }
