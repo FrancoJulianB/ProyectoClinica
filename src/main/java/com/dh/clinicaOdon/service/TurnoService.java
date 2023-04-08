@@ -1,7 +1,10 @@
 package com.dh.clinicaOdon.service;
 
+import com.dh.clinicaOdon.DTO.PacienteDTO;
 import com.dh.clinicaOdon.DTO.TurnoDTO;
+import com.dh.clinicaOdon.entity.Odontologo;
 import com.dh.clinicaOdon.entity.Turno;
+import com.dh.clinicaOdon.exception.ObjectNotFoundException;
 import com.dh.clinicaOdon.repository.TurnoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TurnoService implements IService<TurnoDTO, Turno> {
@@ -21,53 +25,52 @@ public class TurnoService implements IService<TurnoDTO, Turno> {
     @Autowired
     ObjectMapper mapper;
 
-    public TurnoDTO create(Turno turno) throws Exception{
-        boolean existePaciente = pacienteService.exists(turno.getPaciente().getId());
-        boolean existeOdontologo = repository.existsById(turno.getOdontologo().getId());
+    public TurnoDTO create(Turno turno) throws ObjectNotFoundException{
+        boolean existePaciente = pacienteService.existsById(turno.getPaciente().getId());
+        boolean existeOdontologo = odontologoService.existsById(turno.getOdontologo().getId());
         if(existePaciente && existeOdontologo){
             Turno turnoClass = repository.save(turno);
-            TurnoDTO turnoDTO = mapper.convertValue(turnoClass, TurnoDTO.class);
-
+            TurnoDTO turnoDTO = classToDTO(turnoClass);
             return turnoDTO;
         } else {
-            throw new Exception("No se encontro paciente u odontologo con el ID indicado");
+            throw new ObjectNotFoundException("No se encontro paciente u odontologo con el ID indicado");
         }
     }
-    public void delete(Integer id) throws Exception{
+    public void delete(Integer id) throws ObjectNotFoundException{
         if(exists(id)){
             repository.deleteById(id);
         } else{
-            throw new Exception("No se encontro turno con el ID indicado");
+            throw new ObjectNotFoundException("No se encontro turno con el ID indicado");
         }
     }
 
-    public TurnoDTO getById(Integer id) throws Exception{
-        Turno turnoDataBase = repository.findById(id).orElse(null);
+    public TurnoDTO getById(Integer id) throws ObjectNotFoundException{
+        Optional<Turno> turnoDataBase = repository.findById(id);
 
-        if(turnoDataBase == null){
-            throw new Exception("No se encontro ningun turno con el ID indicado.");
+        if(turnoDataBase.isEmpty()){
+            throw new ObjectNotFoundException("No se encontro ningun turno con el ID indicado.");
         }
 
-        TurnoDTO turnoDTO = mapper.convertValue(turnoDataBase, TurnoDTO.class);
+        TurnoDTO turnoDTO = classToDTO(turnoDataBase.get());
         return turnoDTO;
     }
 
     public List<TurnoDTO> getAll(){
         List turnosDTO = new ArrayList();
         for (Turno turnoDataBase : repository.findAll()){
-            TurnoDTO turnoDTO = mapper.convertValue(turnoDataBase, TurnoDTO.class);
+            TurnoDTO turnoDTO = classToDTO(turnoDataBase);
 
             turnosDTO.add(turnoDTO);
         }
 
         return turnosDTO;
     }
-    public TurnoDTO update(Turno turno) throws Exception{
+    public TurnoDTO update(Turno turno) throws ObjectNotFoundException{
         if(!exists(turno.getId())){
-            throw new Exception("No se encontro turno para actualizar con el ID indicado.");
+            throw new ObjectNotFoundException("No se encontro turno para actualizar con el ID indicado.");
         }
         Turno turnoDataBase = repository.save(turno);
-        TurnoDTO turnoDTO = mapper.convertValue(turno, TurnoDTO.class);
+        TurnoDTO turnoDTO = classToDTO(turnoDataBase);
 
         return turnoDTO;
     }

@@ -5,4 +5,5 @@ public class HasNullFieldsException extends Exception{
     public HasNullFieldsException(String message) {
         super(message);
     }
+
 }

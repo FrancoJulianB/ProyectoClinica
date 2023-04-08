@@ -21,7 +21,7 @@ public class PacienteController {
     Logger LOGGER = Logger.getLogger(PacienteController.class);
 
     @PostMapping
-    public ResponseEntity<PacienteDTO> crearPaciente(@RequestBody PacienteDTO pacienteDTO) {
+    public ResponseEntity<PacienteDTO> crearPaciente(@RequestBody Paciente paciente) {
         ResponseEntity response;
         try{
             PacienteDTO pacienteDTO = service.create(paciente);

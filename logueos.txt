@@ -41,3 +41,24 @@ ERROR   2023-04-03 18:40:43,875 [http-nio-8080-exec-7] com.dh.clinicaOdon.contro
 ERROR   2023-04-03 18:41:13,143 [http-nio-8080-exec-10] com.dh.clinicaOdon.controller.OdontologoController  - java.lang.Exception: No se encontro odontologo con el ID indicado.
 ERROR   2023-04-03 18:41:31,510 [http-nio-8080-exec-1] com.dh.clinicaOdon.controller.OdontologoController  - java.lang.Exception: No existe odontologo para eliminar con ese ID.
 ERROR   2023-04-03 19:25:22,609 [http-nio-8080-exec-1] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException: No se encontro odontologo con el ID indicado.
+ERROR   2023-04-07 21:25:11,427 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio
+ERROR   2023-04-07 21:25:31,814 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio
+ERROR   2023-04-07 21:25:48,196 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ExistentObjectException: Ya existe un objeto con el id indicado
+ERROR   2023-04-08 10:45:13,182 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio
+ERROR   2023-04-08 10:49:22,572 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ExistentObjectException: Ya existe un odontologo con la matricula indicada.
+ERROR   2023-04-08 10:55:02,961 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException: No se encontro odontologo con el ID indicado.
+ERROR   2023-04-08 10:56:20,651 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException: No se encontro odontologo con el ID indicado.
+ERROR   2023-04-08 15:51:07,064 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio
+ERROR   2023-04-08 15:51:07,082 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException: No se encontro odontologo con el ID indicado.
+ERROR   2023-04-08 15:51:07,110 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ExistentObjectException: Ya existe un odontologo con la matricula indicada.
+ERROR   2023-04-08 16:01:55,216 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException: No se encontro odontologo con el ID indicado.
+ERROR   2023-04-08 16:17:20,038 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException
+ERROR   2023-04-08 16:17:37,177 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException
+ERROR   2023-04-08 16:23:59,848 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException
+ERROR   2023-04-08 16:24:18,832 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException
+ERROR   2023-04-08 16:24:29,792 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio
+ERROR   2023-04-08 16:24:29,815 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException
+ERROR   2023-04-08 16:24:29,821 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException: No se encontro odontologo con el ID indicado.
+ERROR   2023-04-08 16:24:29,827 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException
+ERROR   2023-04-08 16:24:29,846 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException
+ERROR   2023-04-08 16:24:29,855 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ExistentObjectException: Ya existe un odontologo con la matricula indicada.

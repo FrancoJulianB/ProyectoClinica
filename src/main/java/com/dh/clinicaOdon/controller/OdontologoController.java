@@ -41,12 +41,11 @@ public class OdontologoController {
     @GetMapping("/{id}")
     public ResponseEntity<OdontologoDTO> buscarOdontologo(@PathVariable Integer id) {
         ResponseEntity response;
-        OdontologoDTO odontologoDTO;
         try{
-            odontologoDTO = service.getById(id);
+            OdontologoDTO odontologoDTO = service.getById(id);
             response = ResponseEntity.status(HttpStatus.OK).body(odontologoDTO);
         } catch(ObjectNotFoundException e){
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontro ningun odontologo con el ID indicado.");
+            response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
             LOGGER.error(e);
         }
         return response;
@@ -65,7 +64,7 @@ public class OdontologoController {
             service.delete(id);
             response = ResponseEntity.status(HttpStatus.OK).body("Se elimino el odontologo solicitado");
         } catch(ObjectNotFoundException e){
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontro odontologo con el ID indicado. Error al eliminar.");
+            response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
             LOGGER.error(e);
         }
         return response;
@@ -78,8 +77,11 @@ public class OdontologoController {
         try{
             odontologoDTO = service.update(odontologo);
             response = ResponseEntity.status(HttpStatus.OK).body(odontologoDTO);
-        } catch(Exception e){
+        } catch(ObjectNotFoundException e){
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+            LOGGER.error(e);
+        } catch(HasNullFieldsException e){
+            response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
             LOGGER.error(e);
         }
         return response;

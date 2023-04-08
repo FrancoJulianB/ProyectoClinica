@@ -2,6 +2,9 @@ package com.dh.clinicaOdon.service;
 
 import com.dh.clinicaOdon.DTO.OdontologoDTO;
 import com.dh.clinicaOdon.entity.Odontologo;
+import com.dh.clinicaOdon.exception.ExistentObjectException;
+import com.dh.clinicaOdon.exception.HasNullFieldsException;
+import com.dh.clinicaOdon.exception.ObjectNotFoundException;
 import com.dh.clinicaOdon.repository.OdontologoRepository;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
@@ -62,21 +65,33 @@ class OdontologoServiceTest {
     }
 
     @Test
-    void create_throw_exception(){
-        Odontologo odontologo = new Odontologo(1, "Fernandez", "Fernando", "1234");
+    void create_throw_HasNullFieldsException(){
+        Odontologo odontologo = new Odontologo(1, "", "Fernando", "1234");
+
+        when(repository.getOdontologoByMatricula(any())).thenReturn(null);
+        when(repository.save(any())).thenReturn(odontologo);
+
+        Assertions.assertThrows(HasNullFieldsException.class, () ->{
+            service.create(odontologo);
+        });
+    }
+
+    @Test
+    void create_throw_ExistentObjectException(){
+        Odontologo odontologo = new Odontologo(1, "Barrera", "Fernando", "1234");
         List<Odontologo> odontologos = new ArrayList<>();
         odontologos.add(odontologo);
 
         when(repository.getOdontologoByMatricula(any())).thenReturn(odontologos);
         when(repository.save(any())).thenReturn(odontologo);
 
-        Assertions.assertThrows(Exception.class, () ->{
+        Assertions.assertThrows(ExistentObjectException.class, () ->{
             service.create(odontologo);
         });
     }
 
     @Test
-    void getById() throws Exception {
+    void getById() throws ObjectNotFoundException {
         //Arrange
         Odontologo odontologo = new Odontologo(1, "Gonzalez", "Martin", "1234");
         doReturn(Optional.of(odontologo)).when(repository).findById(any());
@@ -95,17 +110,18 @@ class OdontologoServiceTest {
     }
 
     @Test
-    void getById_throw_exception() throws Exception {
+    void getById_throw_ObjectNotFoundException() throws ObjectNotFoundException {
         //Arrange
-        when(repository.findById(any())).thenReturn(null);
+        Odontologo odontologo = null;
+        when(repository.findById(any())).thenReturn(Optional.ofNullable(odontologo));
         //Arrange
-        Assertions.assertThrows(Exception.class, () ->{
+        Assertions.assertThrows(ObjectNotFoundException.class, () ->{
             service.getById(1);
         });
     }
 
     @Test
-    void delete() throws Exception {
+    void delete() throws ObjectNotFoundException {
         //Arrange
         Odontologo odontologo1 = new Odontologo(1, "Gonzalez", "Martin", "1234");
         Odontologo odontologo2 = new Odontologo(2, "Martinez", "Gonzalo", "1235");
@@ -129,11 +145,11 @@ class OdontologoServiceTest {
     }
 
     @Test
-    void delete_throw_exception(){
+    void delete_throw_ObjectNotFoundException(){
         //Arrange
         when(repository.existsById(any())).thenReturn(false);
         //Act
-        Assertions.assertThrows(Exception.class, () ->{
+        Assertions.assertThrows(ObjectNotFoundException.class, () ->{
             service.delete(1);
         });
     }
@@ -159,12 +175,23 @@ class OdontologoServiceTest {
         Assertions.assertEquals(odontologoEsperado, odontologoUpdateado);
     }
     @Test
-    void update_throws_exception(){
+    void update_throws_ObjectNotFoundException(){
         //Arrange
         Odontologo odontologo = new Odontologo(1, "Gonzalez", "Martin", "1234");
         when(repository.existsById(any())).thenReturn(false);
         //Act
-        Assertions.assertThrows(Exception.class, () ->{
+        Assertions.assertThrows(ObjectNotFoundException.class, () ->{
+            service.update(odontologo);
+        });
+    }
+
+    @Test
+    void update_throws_HasNullFieldsException(){
+        //Arrange
+        Odontologo odontologo = new Odontologo(1, "", "Martin", "1234");
+        when(repository.existsById(any())).thenReturn(true);
+        //Act
+        Assertions.assertThrows(HasNullFieldsException.class, () ->{
             service.update(odontologo);
         });
     }
@@ -178,5 +205,14 @@ class OdontologoServiceTest {
         OdontologoDTO odontologoDevuelto = service.classToDTO(odontologo);
         //Assert
         Assertions.assertEquals(odontologoEsperado, odontologoDevuelto);
+    }
+
+    @Test
+    void existById(){
+        //Arrange
+        when(repository.existsById(any())).thenReturn(false);
+
+        //Assert
+        Assertions.assertFalse(service.existsById(1));
     }
 }

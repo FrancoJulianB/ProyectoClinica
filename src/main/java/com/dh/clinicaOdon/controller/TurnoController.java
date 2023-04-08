@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/turnos")
-public class TurnoController {
+public class  TurnoController {
     @Autowired
     private TurnoService service;
     Logger LOGGER = Logger.getLogger(TurnoController.class);

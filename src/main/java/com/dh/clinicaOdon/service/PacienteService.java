@@ -4,6 +4,7 @@ import com.dh.clinicaOdon.DTO.PacienteDTO;
 import com.dh.clinicaOdon.entity.Paciente;
 import com.dh.clinicaOdon.exception.ExistentObjectException;
 import com.dh.clinicaOdon.exception.HasNullFieldsException;
+import com.dh.clinicaOdon.exception.ObjectNotFoundException;
 import com.dh.clinicaOdon.repository.DomicilioRepository;
 import com.dh.clinicaOdon.repository.PacienteRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,7 +34,7 @@ public class PacienteService implements IService<PacienteDTO, Paciente> {
             domicilioRepository.save(paciente.getDomicilio());
             Paciente pacienteDataBase = repository.save(paciente);
 
-            PacienteDTO pacienteDTO = mapper.convertValue(pacienteDataBase, PacienteDTO.class);
+            PacienteDTO pacienteDTO = classToDTO(pacienteDataBase);
 
             return pacienteDTO;
         }
@@ -41,26 +42,26 @@ public class PacienteService implements IService<PacienteDTO, Paciente> {
     public List<PacienteDTO> getAll(){
         List<PacienteDTO> pacientes = new ArrayList<>();
         for (Paciente pacienteDataBase: repository.findAll()){
-            PacienteDTO pacienteDTO = mapper.convertValue(pacienteDataBase, PacienteDTO.class);
+            PacienteDTO pacienteDTO = classToDTO(pacienteDataBase);
             pacientes.add(pacienteDTO);
         }
         return pacientes;
         };
 
-        public PacienteDTO getById(Integer id) throws Exception{
-        Paciente pacienteDataBase = repository.findById(id).orElse(null);
-        if(pacienteDataBase == null){
-            throw new Exception("No se encontro paciente con el id indicado");
+        public PacienteDTO getById(Integer id) throws ObjectNotFoundException{
+        Optional<Paciente> pacienteDataBase = repository.findById(id);
+        if(pacienteDataBase.isEmpty()){
+            throw new ObjectNotFoundException("No se encontro paciente con el id indicado");
         }
 
-        PacienteDTO pacienteDTO = classToDTO(pacienteDataBase);
+        PacienteDTO pacienteDTO = classToDTO(pacienteDataBase.get());
         return pacienteDTO;
     }
 
-    public PacienteDTO update(Paciente paciente) throws Exception{
+    public PacienteDTO update(Paciente paciente) throws ObjectNotFoundException{
 
-        if(!exists(paciente.getId())){
-            throw new Exception("No se encontro paciente con el ID indicado para modificar.");
+        if(!repository.existsById(paciente.getId())){
+            throw new ObjectNotFoundException("No se encontro paciente con el ID indicado para modificar.");
         }
         //Debemos guardar el domicilio primero, ya que JPA busca en la base de datos que exista ese domicilio. El metodo .save
         //lo creara en caso de que no exista el domicilio, o lo fusionara si ya existe.
@@ -68,22 +69,19 @@ public class PacienteService implements IService<PacienteDTO, Paciente> {
         Paciente pacienteDataBase = repository.save(paciente);
 
         //Setteamos el pacienteDTO para devolver este por consola, tambien elegimos que info queremos mostrar realmente.
-        PacienteDTO pacienteDTO = mapper.convertValue(pacienteDataBase, PacienteDTO.class);
+        PacienteDTO pacienteDTO = classToDTO(pacienteDataBase);
 
         return pacienteDTO;
     }
 
-    public void delete(Integer id) throws Exception{
-        if(exists(id)){
+    public void delete(Integer id) throws ObjectNotFoundException{
+        if(repository.existsById(id)){
           repository.deleteById(id);
         } else{
-          throw new Exception("No se encontro paciente para eliminar con el ID indicado.");
+          throw new ObjectNotFoundException("No se encontro paciente para eliminar con el ID indicado.");
         }
     }
 
-    public boolean exists(Integer id){
-        return repository.existsById(id);
-    }
 
     public boolean dniExist (String dni){
         return repository.getPacienteByDNI(dni).size() >= 1;
@@ -106,7 +104,9 @@ public class PacienteService implements IService<PacienteDTO, Paciente> {
         return (nombre || apellido || domicilio || email || dni);
 
     }
-
+    public boolean existsById(Integer id){
+            return repository.existsById(id);
+    }
     public PacienteDTO classToDTO(Paciente paciente){
         PacienteDTO pacienteDTO = new PacienteDTO();
         pacienteDTO.setId(paciente.getId());

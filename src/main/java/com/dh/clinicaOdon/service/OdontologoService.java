@@ -6,7 +6,6 @@ import com.dh.clinicaOdon.exception.ExistentObjectException;
 import com.dh.clinicaOdon.exception.HasNullFieldsException;
 import com.dh.clinicaOdon.exception.ObjectNotFoundException;
 import com.dh.clinicaOdon.repository.OdontologoRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -98,6 +97,9 @@ public class OdontologoService implements IService<OdontologoDTO, Odontologo> {
         return odontologoDTO;
     }
 
+    public boolean existsById(Integer id){
+        return repository.existsById(id);
+    }
     public boolean matriculaExist(String matricula){
         return repository.getOdontologoByMatricula(matricula).size() >= 1;
     }
