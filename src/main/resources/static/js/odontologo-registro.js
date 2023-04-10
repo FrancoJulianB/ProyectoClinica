@@ -4,8 +4,8 @@ formRegistro.addEventListener('submit', function(event) {
 
     let odontologo = {
         matricula: document.querySelector('#matricula').value,
-        nombre: document.querySelector('#first-name').value,
-        apellido: document.querySelector('#last-name').value
+        nombre: document.querySelector('#nombre').value,
+        apellido: document.querySelector('#apellido').value
     };
 
 

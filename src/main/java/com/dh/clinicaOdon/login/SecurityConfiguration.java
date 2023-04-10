@@ -28,19 +28,17 @@ public class SecurityConfiguration {
         provider.setPasswordEncoder(bCryptPasswordEncoder);
         provider.setUserDetailsService(usuarioService);
         auth.authenticationProvider(provider);
-
     }
-
-    @Bean
+@Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
-        return http.csrf().disable()
+        http.csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/**").permitAll()
+                .requestMatchers("/user/**").permitAll()
                 .anyRequest().permitAll()
                 .and()
-                .formLogin()
-                .and().build();
+                .formLogin();
+
+        return http.build();
     }
 
 

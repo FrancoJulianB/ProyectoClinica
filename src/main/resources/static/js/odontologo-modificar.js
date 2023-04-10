@@ -4,18 +4,17 @@ formModificar.addEventListener('submit', function(event) {
     const url = window.location.href;
     const id = url.substring(url.lastIndexOf('/') + 1);
 
-    const data = {
+    const odontologo = {
         id: parseInt(id),
-        apellido: document.querySelector('#last-name').value,
-        nombre: document.querySelector('#first-name').value,
+        apellido: document.querySelector('#apellido').value,
+        nombre: document.querySelector('#nombre').value,
         matricula: document.querySelector('#matricula').value,
     };
-    console.log(data)
 
     const setting = {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
+        body: JSON.stringify(odontologo)
     }
 
     fetch('/odontologos', setting)

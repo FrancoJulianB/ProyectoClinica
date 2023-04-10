@@ -15,7 +15,6 @@ formModificar.addEventListener('submit', function(event) {
         fecha: document.querySelector('#fecha').value,
         hora: document.querySelector('#hora').value
     };
-    console.log(turno)
 
     const setting = {
         method: 'POST',

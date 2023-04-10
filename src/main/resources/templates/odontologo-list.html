@@ -10,7 +10,7 @@
 <a href="/odontologos">Registrar nuevo odontologo</a>
 
 
-<table class="table">
+<table class="table table-striped">
   <thead>
   <tr>
     <th scope="col">ID</th>
@@ -23,13 +23,13 @@
   <tbody>
   <tr th:each="odontologo : ${odontologos}">
     <td th:text="${odontologo.getId()}">ID</td>
-    <td th:text="${odontologo.getNombre()}">NOMBRE</td>
     <td th:text="${odontologo.getApellido()}">Apellido</td>
+    <td th:text="${odontologo.getNombre()}">Nombre</td>
     <td>
-      <button><a th:href="@{/odontologos/modificar/{id}(id=${odontologo.getId()})}">Editar</a></button>
+      <button type="button" class="btn btn-info"><a th:href="@{/odontologos/modificar/{id}(id=${odontologo.getId()})}">Editar</a></button>
     </td>
     <td>
-      <button th:onclick="'deleteOdontologo(' + ${odontologo.getId()} + ')'" type="button">Eliminar</button>
+      <button th:onclick="'deleteOdontologo(' + ${odontologo.getId()} + ')'" type="button" class="btn btn-danger">Eliminar</button>
     </td>
 
   </tr>

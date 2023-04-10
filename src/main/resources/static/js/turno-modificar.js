@@ -11,19 +11,18 @@ formModificar.addEventListener('submit', function(event) {
         id:document.querySelector('#odontologo-id').value,
     }
 
-    const data = {
+    const turno = {
         id: parseInt(id),
         paciente: paciente,
         odontologo: odontologo,
         fecha: document.querySelector('#fecha').value,
         hora: document.querySelector('#hora').value
     };
-    console.log(data)
 
     const setting = {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
+        body: JSON.stringify(turno)
     }
 
     fetch('/turnos', setting)

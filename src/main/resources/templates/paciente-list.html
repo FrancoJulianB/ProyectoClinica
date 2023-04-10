@@ -9,12 +9,14 @@
 <a href="/index">Volver</a>
 <a href="/pacientes/registrar">Registrar nuevo paciente</a>
 
-<table class="table">
+<table class="table table-striped">
     <thead>
     <tr>
         <th scope="col">ID</th>
         <th scope="col">Apellido</th>
         <th scope="col">Nombre</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
     </tr>
     </thead>
     <tbody>
@@ -23,10 +25,10 @@
         <td th:text="${paciente.getApellido()}">Apellido</td>
         <td th:text="${paciente.getNombre()}">Nombre</td>
         <td>
-            <button><a th:href="@{/pacientes/modificar/{id}(id=${paciente.getId()})}">Editar</a></button>
+            <button type="button" class="btn btn-info"><a th:href="@{/pacientes/modificar/{id}(id=${paciente.getId()})}">Editar</a></button>
         </td>
         <td>
-            <button th:onclick="'deletePaciente(' + ${paciente.getId()} + ')'" type="button">Eliminar</button>
+            <button th:onclick="'deletePaciente(' + ${paciente.getId()} + ')'" type="button" class="btn btn-danger">Eliminar</button>
         </td>
     </tr>
 
