@@ -62,3 +62,9 @@ ERROR   2023-04-08 16:24:29,821 [main] com.dh.clinicaOdon.controller.OdontologoC
 ERROR   2023-04-08 16:24:29,827 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException
 ERROR   2023-04-08 16:24:29,846 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException
 ERROR   2023-04-08 16:24:29,855 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ExistentObjectException: Ya existe un odontologo con la matricula indicada.
+ERROR   2023-04-10 01:33:20,517 [http-nio-8082-exec-8] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio
+ERROR   2023-04-10 01:33:34,687 [http-nio-8082-exec-7] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio
+ERROR   2023-04-10 01:34:13,551 [http-nio-8082-exec-2] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio
+ERROR   2023-04-10 01:34:39,476 [http-nio-8082-exec-5] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio
+ERROR   2023-04-10 01:34:46,211 [http-nio-8082-exec-6] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio
+ERROR   2023-04-10 01:38:31,565 [http-nio-8082-exec-9] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ExistentObjectException: Ya existe un odontologo con la matricula indicada.

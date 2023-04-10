@@ -92,7 +92,7 @@ public class TurnoService implements IService<TurnoDTO, Turno> {
     public TurnoDTO classToDTO(Turno turno){
         TurnoDTO turnoDTO = new TurnoDTO();
         turnoDTO.setId(turno.getId());
-        turnoDTO.setDia(turno.getDia());
+        turnoDTO.setFecha(turno.getFecha());
         turnoDTO.setHora(turno.getHora());
         turnoDTO.setPaciente(pacienteService.classToDTO(turno.getPaciente()));
         turnoDTO.setOdontologo(odontologoService.classToDTO(turno.getOdontologo()));

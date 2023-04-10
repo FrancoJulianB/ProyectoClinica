@@ -15,11 +15,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="paciente : ${pacientes}}">
-        <!--<th scope="row">1</th>-->
-        <td th:text="${paciente.id}">ID</td>
-        <td th:text="${paciente.apellido}">Apellido</td>
-        <td th:text="${paciente.nombre}">Nombre</td>
+    <tr th:each="paciente : ${pacientes}">
+        <td th:text="${paciente.getId()}">ID</td>
+        <td th:text="${paciente.getApellido()}">Apellido</td>
+        <td th:text="${paciente.getNombre()}">Nombre</td>
     </tr>
 
     </tbody>

@@ -21,6 +21,7 @@ public class Odontologo {
     private Integer id;
     private String apellido;
     private String nombre;
+    @Column(unique = true)
     private String matricula;
 
     //El mappedby hace referencia a quien se encarga de definir por donde se que columne se unen las tablas.

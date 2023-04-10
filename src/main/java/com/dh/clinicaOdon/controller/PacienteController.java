@@ -7,10 +7,12 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.StreamingHttpOutputMessage;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import java.util.Set;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+import java.util.Set;
 
 
 @RestController
@@ -20,6 +22,21 @@ public class PacienteController {
     private PacienteService service;
     Logger LOGGER = Logger.getLogger(PacienteController.class);
 
+
+    @RequestMapping(value="/paciente-list",method=RequestMethod.GET)
+    public ModelAndView mostrarFormulario(Model model) {
+        List<PacienteDTO> pacientes = service.getAll();
+        model.addAttribute("pacientes", pacientes);
+        ModelAndView mav = new ModelAndView("paciente-list");
+        return mav;
+    }
+    @RequestMapping(value="/dashboard-paciente",method=RequestMethod.GET)
+    public ModelAndView dashboardPaciente(Model model) {
+        List<PacienteDTO> pacientes = service.getAll();
+        model.addAttribute("pacientes", pacientes);
+        ModelAndView mav = new ModelAndView("pacientes-list");
+        return mav;
+    }
     @PostMapping
     public ResponseEntity<PacienteDTO> crearPaciente(@RequestBody Paciente paciente) {
         ResponseEntity response;
@@ -40,6 +57,7 @@ public class PacienteController {
         try {
             pacienteDTO = service.getById(id);
             response = ResponseEntity.status(HttpStatus.OK).body(pacienteDTO);
+            LOGGER.info(pacienteDTO);
         } catch (Exception e) {
             LOGGER.error(e);
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
@@ -81,5 +99,6 @@ public class PacienteController {
 
         return response;
     }
+
 
 }

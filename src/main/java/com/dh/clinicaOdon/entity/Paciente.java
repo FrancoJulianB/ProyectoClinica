@@ -13,7 +13,6 @@ import lombok.Setter;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "PACIENTES", indexes = {@Index(name = "dni_unique_index", columnList = "dni", unique = true)})
 public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -23,12 +22,8 @@ public class Paciente {
     private String email;
     @Column(unique = true)
     private String dni;
-    //private Date fechaIngreso;
+
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "domicilio_id")
     private Domicilio domicilio;
-/*    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    @JsonIgnore
-    private Set<Turno> turnos = new HashSet<>();*/
-
 }

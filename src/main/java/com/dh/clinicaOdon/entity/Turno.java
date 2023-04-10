@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,8 +27,6 @@ public class Turno {
     @ManyToOne
     @JoinColumn(name = "odontologo_id", nullable = false)
     private Odontologo odontologo;
-    private String hora;
-    private String dia;
-    private String mes;
-    private String anio;
+    private LocalTime hora;
+    private LocalDate fecha;
 }

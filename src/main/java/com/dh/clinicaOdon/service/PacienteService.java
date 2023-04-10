@@ -40,12 +40,13 @@ public class PacienteService implements IService<PacienteDTO, Paciente> {
         }
     }
     public List<PacienteDTO> getAll(){
-        List<PacienteDTO> pacientes = new ArrayList<>();
-        for (Paciente pacienteDataBase: repository.findAll()){
-            PacienteDTO pacienteDTO = classToDTO(pacienteDataBase);
-            pacientes.add(pacienteDTO);
+        List<PacienteDTO> pacientesDTO = new ArrayList<>();
+        List<Paciente> pacientesDataBase = repository.findAll();
+        for (Paciente pacienteDataBase: pacientesDataBase){
+            PacienteDTO unPacienteDTO = classToDTO(pacienteDataBase);
+            pacientesDTO.add(unPacienteDTO);
         }
-        return pacientes;
+        return pacientesDTO;
         };
 
         public PacienteDTO getById(Integer id) throws ObjectNotFoundException{

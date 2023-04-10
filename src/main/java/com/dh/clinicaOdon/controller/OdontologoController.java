@@ -10,8 +10,11 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -22,6 +25,18 @@ public class OdontologoController {
     private OdontologoService service;
     Logger LOGGER = Logger.getLogger(OdontologoController.class);
 
+    @RequestMapping(value="/list",method=RequestMethod.GET)
+    public ModelAndView listar(Model model) {
+        List<OdontologoDTO> odontologos = (List<OdontologoDTO>) listarOdontologo().getBody();
+        model.addAttribute("odontologos", odontologos);
+        ModelAndView mav = new ModelAndView("odontologos-list");
+        return mav;
+    }
+    @RequestMapping(value="/registrar", method=RequestMethod.GET)
+    public ModelAndView registro() {
+        ModelAndView mav = new ModelAndView("odontologo-registro");
+        return mav;
+    }
     @PostMapping
     public ResponseEntity<OdontologoDTO> crearOdontologo(@RequestBody Odontologo odontologo) {
         ResponseEntity response;
