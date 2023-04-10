@@ -68,3 +68,27 @@ ERROR   2023-04-10 01:34:13,551 [http-nio-8082-exec-2] com.dh.clinicaOdon.contro
 ERROR   2023-04-10 01:34:39,476 [http-nio-8082-exec-5] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio
 ERROR   2023-04-10 01:34:46,211 [http-nio-8082-exec-6] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio
 ERROR   2023-04-10 01:38:31,565 [http-nio-8082-exec-9] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ExistentObjectException: Ya existe un odontologo con la matricula indicada.
+ERROR   2023-04-10 09:41:52,527 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio
+ERROR   2023-04-10 09:41:52,535 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException
+ERROR   2023-04-10 09:41:52,539 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException: No se encontro odontologo con el ID indicado.
+ERROR   2023-04-10 09:41:52,542 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException
+ERROR   2023-04-10 09:41:52,550 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException
+ERROR   2023-04-10 09:41:52,554 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ExistentObjectException: Ya existe un odontologo con la matricula indicada.
+ERROR   2023-04-10 10:03:45,383 [http-nio-8080-exec-7] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ExistentObjectException: Ya existe un odontologo con la matricula indicada.
+ERROR   2023-04-10 10:05:35,857 [http-nio-8080-exec-7] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio
+ERROR   2023-04-10 10:08:11,363 [http-nio-8080-exec-4] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ExistentObjectException: Ya existe un odontologo con la matricula indicada.
+ERROR   2023-04-10 10:08:36,857 [http-nio-8080-exec-8] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ExistentObjectException: Ya existe un odontologo con la matricula indicada.
+ERROR   2023-04-10 14:22:11,830 [http-nio-8080-exec-3] com.dh.clinicaOdon.controller.PacienteController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio.
+ERROR   2023-04-10 14:23:16,420 [http-nio-8080-exec-5] com.dh.clinicaOdon.controller.PacienteController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio.
+ERROR   2023-04-10 14:23:57,221 [http-nio-8080-exec-2] com.dh.clinicaOdon.controller.PacienteController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio.
+ERROR   2023-04-10 14:25:55,776 [http-nio-8080-exec-4] com.dh.clinicaOdon.controller.PacienteController  - com.dh.clinicaOdon.exception.ExistentObjectException: Ya existe un paciente registrado con el DNI indicado.
+ERROR   2023-04-10 14:37:25,018 [http-nio-8080-exec-3] com.dh.clinicaOdon.controller.PacienteController  - org.springframework.dao.InvalidDataAccessApiUsageException: The given id must not be null
+ERROR   2023-04-10 15:06:02,231 [http-nio-8080-exec-7] com.dh.clinicaOdon.controller.TurnoController  - java.lang.NullPointerException: Cannot invoke "com.dh.clinicaOdon.entity.Paciente.getId()" because the return value of "com.dh.clinicaOdon.entity.Turno.getPaciente()" is null
+ERROR   2023-04-10 15:06:43,750 [http-nio-8080-exec-10] com.dh.clinicaOdon.controller.TurnoController  - java.lang.NullPointerException: Cannot invoke "com.dh.clinicaOdon.entity.Paciente.getId()" because the return value of "com.dh.clinicaOdon.entity.Turno.getPaciente()" is null
+ERROR   2023-04-10 15:18:25,029 [http-nio-8080-exec-4] com.dh.clinicaOdon.controller.TurnoController  - org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]
+ERROR   2023-04-10 15:32:07,482 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException: Alguno de los campos esta vacio
+ERROR   2023-04-10 15:32:07,505 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.HasNullFieldsException
+ERROR   2023-04-10 15:32:07,512 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException: No se encontro odontologo con el ID indicado.
+ERROR   2023-04-10 15:32:07,518 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException
+ERROR   2023-04-10 15:32:07,538 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ObjectNotFoundException
+ERROR   2023-04-10 15:32:07,549 [main] com.dh.clinicaOdon.controller.OdontologoController  - com.dh.clinicaOdon.exception.ExistentObjectException: Ya existe un odontologo con la matricula indicada.

@@ -23,18 +23,21 @@ public class PacienteController {
     Logger LOGGER = Logger.getLogger(PacienteController.class);
 
 
-    @RequestMapping(value="/paciente-list",method=RequestMethod.GET)
+    @RequestMapping(value="/list",method=RequestMethod.GET)
     public ModelAndView mostrarFormulario(Model model) {
         List<PacienteDTO> pacientes = service.getAll();
         model.addAttribute("pacientes", pacientes);
         ModelAndView mav = new ModelAndView("paciente-list");
         return mav;
     }
-    @RequestMapping(value="/dashboard-paciente",method=RequestMethod.GET)
-    public ModelAndView dashboardPaciente(Model model) {
-        List<PacienteDTO> pacientes = service.getAll();
-        model.addAttribute("pacientes", pacientes);
-        ModelAndView mav = new ModelAndView("pacientes-list");
+    @RequestMapping(value="/registrar", method=RequestMethod.GET)
+    public ModelAndView registro() {
+        ModelAndView mav = new ModelAndView("paciente-registro");
+        return mav;
+    }
+    @RequestMapping(value="/modificar/{id}", method=RequestMethod.GET)
+    public ModelAndView modificar() {
+        ModelAndView mav = new ModelAndView("paciente-modificar");
         return mav;
     }
     @PostMapping

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+
+</head>
+<body>
+<a href="/index">Volver</a>
+<form id="form-registro">
+    <div class="row g-3">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Apellido" aria-label="Apellido" id="last-name">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" id="first-name">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="DNI" aria-label="DNI" id="dni">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Email" aria-label="Email" id="email">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Provincia" aria-label="Provincia" id="provincia">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Localidad" aria-label="Localidad" id="localidad">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Calle" aria-label="Calle" id="calle">
+        </div>
+        <div class="col">
+            <input type="number" class="form-control" placeholder="Numero calle" aria-label="Numero calle" id="numero-calle">
+        </div>
+    </div>
+    <button name="submit" type="submit" id="paciente-submit">Submit</button>
+</form>
+<script src="/static/js/paciente-registro.js"></script>
+</body>
+</html>

@@ -1,5 +1,4 @@
 let formRegistro = document.querySelector('#form-registro');
-console.log("estoy aca")
 formRegistro.addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -19,7 +18,6 @@ formRegistro.addEventListener('submit', function(event) {
     fetch('/odontologos', setting)
         .then(response => response.json())
         .then(dataResponse => {
-            console.log(dataResponse.status)
         })
         .catch(error => console.log(error))
 })

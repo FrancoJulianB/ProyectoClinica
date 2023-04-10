@@ -29,12 +29,17 @@ public class OdontologoController {
     public ModelAndView listar(Model model) {
         List<OdontologoDTO> odontologos = (List<OdontologoDTO>) listarOdontologo().getBody();
         model.addAttribute("odontologos", odontologos);
-        ModelAndView mav = new ModelAndView("odontologos-list");
+        ModelAndView mav = new ModelAndView("odontologo-list");
         return mav;
     }
     @RequestMapping(value="/registrar", method=RequestMethod.GET)
     public ModelAndView registro() {
         ModelAndView mav = new ModelAndView("odontologo-registro");
+        return mav;
+    }
+    @RequestMapping(value="/modificar/{id}", method=RequestMethod.GET)
+    public ModelAndView modificar() {
+        ModelAndView mav = new ModelAndView("odontologo-modificar");
         return mav;
     }
     @PostMapping

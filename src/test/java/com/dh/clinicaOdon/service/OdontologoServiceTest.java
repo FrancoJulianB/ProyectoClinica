@@ -96,14 +96,10 @@ class OdontologoServiceTest {
         Odontologo odontologo = new Odontologo(1, "Gonzalez", "Martin", "1234");
         doReturn(Optional.of(odontologo)).when(repository).findById(any());
         OdontologoDTO odontologoEsperado = new OdontologoDTO(1, "Gonzalez", "Martin");
-        OdontologoDTO odontologoDevuelto = new OdontologoDTO();
+
 
         //Act
-        try{
-            odontologoDevuelto = service.getById(1);
-        } catch(Exception e){
-            LOGGER.error(e);
-        }
+        OdontologoDTO odontologoDevuelto = service.getById(1);
 
         //Assert
         Assertions.assertEquals(odontologoEsperado, odontologoDevuelto);

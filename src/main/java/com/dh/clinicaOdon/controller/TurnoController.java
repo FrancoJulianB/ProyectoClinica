@@ -7,7 +7,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -18,7 +20,23 @@ public class  TurnoController {
     private TurnoService service;
     Logger LOGGER = Logger.getLogger(TurnoController.class);
 
-
+    @RequestMapping(value="/list",method=RequestMethod.GET)
+    public ModelAndView listar(Model model) {
+        List<TurnoDTO> turnos = getAll().getBody();
+        model.addAttribute("turnos", turnos);
+        ModelAndView mav = new ModelAndView("turno-list");
+        return mav;
+    }
+    @RequestMapping(value="/registrar", method=RequestMethod.GET)
+    public ModelAndView registro() {
+        ModelAndView mav = new ModelAndView("turno-registro");
+        return mav;
+    }
+    @RequestMapping(value="/modificar/{id}", method=RequestMethod.GET)
+    public ModelAndView modificar() {
+        ModelAndView mav = new ModelAndView("turno-modificar");
+        return mav;
+    }
     @PostMapping
     public ResponseEntity<TurnoDTO> crearTurno(@RequestBody Turno turno){
         ResponseEntity response;
