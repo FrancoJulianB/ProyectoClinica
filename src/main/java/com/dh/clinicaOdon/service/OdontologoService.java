@@ -34,7 +34,7 @@ public class OdontologoService implements IService<OdontologoDTO, Odontologo> {
         if(hasNullField(odontologo)){
             throw  new HasNullFieldsException("Alguno de los campos esta vacio");
         }else if (matriculaExist(odontologo.getMatricula())){
-            throw new ExistentObjectException("Ya existe un odontologo con la matricula indicada.");
+            throw new ExistentObjectException("Ya existe un odontólogo con la matricula indicada.");
         } else{
             OdontologoDTO odontologoDTO = classToDTO(odontologo);
             repository.save(odontologo);
